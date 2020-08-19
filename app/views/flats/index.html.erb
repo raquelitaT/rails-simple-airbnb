@@ -1,0 +1,23 @@
+<nav class="navbar navbar-light bg-light justify-content-between">
+  <a class="navbar-brand">Simple Airbnb</a>
+  <form class="form-inline">
+    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit"><%= link_to "Add a flat", new_flat_path %></button>
+  </form>
+</nav>
+
+<h1>All your flats (<%= @flats.size %>)</h1>
+
+<% @flats.each do |flat| %>
+<h3><%= flat.name %></h3>
+<p><%= flat.address %></p>
+<p><i class="fa fa-users"></i><%= flat.number_of_guests %></p>
+<p><i class="fa fa-euro"></i><%= flat.price_per_night %></p>
+<br>
+<%= link_to "More info", flat_path(flat) %>
+<br>
+<%= link_to "Edit", edit_flat_path(flat) %>
+<br>
+<%= link_to "Remove", flats_path %>
+<% end %>
